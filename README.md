@@ -4,7 +4,7 @@ A lightweight library to show loading animation inside a button
 [![](https://jitpack.io/v/droidbond/LoadingButton.svg)](https://jitpack.io/v/droidbond/LoadingButton)
 
 ## Installation (with Gradle)
-Just add the dependency to your *build.gradle*:
+Add the dependency to your *build.gradle*:
 
 ```groovy
    repositories {
@@ -12,16 +12,33 @@ Just add the dependency to your *build.gradle*:
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.droidbond:LoadingButton:0.1.0'
+         implementation 'com.github.droidbond:LoadingButton:0.1.1'
    }
 ```
+```
+minSdk 15
+targetSdk 28
+```
+
+### Demo
+  <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155730.png" width="250">
+  <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155750.png" width="250">
+
 ### How to use
 Inside xml layout
+Add this in your root layout. For adding customized attributes use `app` namespace
+```
+xmlns:app="http://schemas.android.com/apk/res-auto"
+ ```
 ```xml
     <droidbond.loadingbutton.LoadingButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/normal"
+            app:text="@string/continue_text"
+            app:textColor="@color/white"
+            app:progressColor="@color/black"
+            app:progressBarSize="small"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="28dp"
