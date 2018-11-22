@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity" tools:layout_editor_absoluteY="81dp">
 
-    <com.didar.loadingbutton.LoadingButton
+    <com.droidbond.loadingbutton.LoadingButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/normal"
@@ -20,7 +20,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"/>
 
-    <com.didar.loadingbutton.LoadingButton
+    <com.droidbond.loadingbutton.LoadingButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:text="Custom Button"

@@ -1,4 +1,4 @@
-package com.didar.loadingbutton
+package com.droidbond.loadingbutton
 
 import android.content.Context
 import android.content.res.Resources
@@ -10,7 +10,6 @@ import android.support.annotation.Nullable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
@@ -27,6 +26,7 @@ class LoadingButton @JvmOverloads constructor(
     private var progressBar: ProgressBar? = null
     private var tvText: TextView? = null
     private var array: TypedArray? = null
+    private lateinit var clickListener: OnClickListener
 
     init {
         array = context.theme.obtainStyledAttributes(attrs, R.styleable.app, defStyleAttr, 0)
@@ -55,9 +55,18 @@ class LoadingButton @JvmOverloads constructor(
         Log.d(TAG, "startLoading: ")
     }
 
+    override fun setOnClickListener(listener: OnClickListener) {
+        clickListener = listener
+    }
+
     private fun initView() {
 
-        val view = LayoutInflater.from(context).inflate(R.layout.layout_loading_button_lb, null, false)
+        val view = inflate(context, R.layout.layout_loading_button_lb, null)
+        addView(view)
+
+        view.setOnClickListener {
+            clickListener.onClick(view)
+        }
 
         val bg = array?.getResourceId(R.styleable.app_background, 0)
 
@@ -98,7 +107,6 @@ class LoadingButton @JvmOverloads constructor(
 
         tvText!!.textSize = size
 
-        addView(view)
         array?.recycle()
     }
 

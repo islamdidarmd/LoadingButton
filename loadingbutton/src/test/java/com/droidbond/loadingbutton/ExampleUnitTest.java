@@ -1,4 +1,4 @@
-package com.didar.loadingbutton;
+package com.droidbond.loadingbutton;
 
 import org.junit.Test;
 

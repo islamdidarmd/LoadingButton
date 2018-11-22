@@ -1,7 +1,8 @@
-package com.didar.loadingbuttonsample
+package com.droidbond.loadingbuttonsample
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             show = !show
+        }
+
+        custombtn.setOnClickListener {
+            Log.d("hhh", "hhhh")
+        }
+
+        normal.setOnClickListener {
+            Log.d("hhh", "hhhh")
         }
     }
 

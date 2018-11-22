@@ -18,7 +18,7 @@ Just add the dependency to your *build.gradle*:
 ### How to use
 Inside xml layout
 ```xml
-    <com.didar.loadingbutton.LoadingButton
+    <droidbond.loadingbutton.LoadingButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/normal"
