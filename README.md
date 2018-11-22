@@ -31,7 +31,7 @@ Add this in your root layout. For adding customized attributes use `app` namespa
 xmlns:app="http://schemas.android.com/apk/res-auto"
  ```
 ```xml
-    <droidbond.loadingbutton.LoadingButton
+    <com.droidbond.loadingbutton.LoadingButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/normal"
