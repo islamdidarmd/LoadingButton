@@ -25,7 +25,7 @@ targetSdk 28
   <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155750.png" width="250">
 
 ### How to use
-Inside xml layout, add this in your root element. For using custom attributes use `app` namespace
+For using custom attributes use `app` namespace
 ```
 xmlns:app="http://schemas.android.com/apk/res-auto"
  ```
