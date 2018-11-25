@@ -12,7 +12,7 @@ Add the dependency to your *build.gradle*:
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.droidbond:LoadingButton:0.1.3'
+         implementation 'com.github.droidbond:LoadingButton:0.1.4'
    }
 ```
 ```
