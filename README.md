@@ -12,7 +12,7 @@ Add the dependency to your *build.gradle*:
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.droidbond:LoadingButton:0.1.1'
+         implementation 'com.github.droidbond:LoadingButton:0.1.3'
    }
 ```
 ```
@@ -25,13 +25,12 @@ targetSdk 28
   <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155750.png" width="250">
 
 ### How to use
-Inside xml layout
-Add this in your root layout. For adding customized attributes use `app` namespace
+Inside xml layout, add this in your root element. For using custom attributes use `app` namespace
 ```
 xmlns:app="http://schemas.android.com/apk/res-auto"
  ```
 ```xml
-    <droidbond.loadingbutton.LoadingButton
+    <com.droidbond.loadingbutton.LoadingButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/normal"
