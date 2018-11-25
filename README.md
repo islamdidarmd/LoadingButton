@@ -12,7 +12,7 @@ Add the dependency to your *build.gradle*:
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.droidbond:LoadingButton:0.1.3'
+         implementation 'com.github.droidbond:LoadingButton:0.1.4'
    }
 ```
 ```
@@ -54,6 +54,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
         <attr name="boldText" format="boolean"/>
         <attr name="textSize" format="dimension"/>
         <attr name="progressColor" format="color"/>
+        <attr name="customFontFamily" format="reference"/>
         <attr name="background" format="reference"/>
         <attr name="progressBarSize" format="enum">
             <enum name="large" value="64"/>
