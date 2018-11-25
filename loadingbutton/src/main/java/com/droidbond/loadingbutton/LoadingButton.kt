@@ -26,7 +26,6 @@ class LoadingButton @JvmOverloads constructor(
     private var progressBar: ProgressBar? = null
     private var tvText: TextView? = null
     private var array: TypedArray? = null
-    private lateinit var clickListener: OnClickListener
 
     init {
         array = context.theme.obtainStyledAttributes(attrs, R.styleable.app, defStyleAttr, 0)
@@ -55,18 +54,10 @@ class LoadingButton @JvmOverloads constructor(
         Log.d(TAG, "startLoading: ")
     }
 
-    override fun setOnClickListener(listener: OnClickListener) {
-        clickListener = listener
-    }
-
     private fun initView() {
 
         val view = inflate(context, R.layout.layout_loading_button_lb, null)
         addView(view)
-
-        view.setOnClickListener {
-            clickListener.onClick(view)
-        }
 
         val bg = array?.getResourceId(R.styleable.app_background, 0)
 
