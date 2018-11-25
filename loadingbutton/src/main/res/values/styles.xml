@@ -7,6 +7,7 @@
         <attr name="textSize" format="dimension"/>
         <attr name="progressColor" format="color"/>
         <attr name="background" format="reference"/>
+        <attr name="customFontFamily" format="reference"/>
         <attr name="progressBarSize" format="enum">
             <enum name="large" value="64"/>
             <enum name="medium" value="48"/>

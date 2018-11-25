@@ -7,6 +7,7 @@ import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.support.annotation.NonNull
 import android.support.annotation.Nullable
+import android.support.v4.content.res.ResourcesCompat
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
@@ -96,7 +97,13 @@ class LoadingButton @JvmOverloads constructor(
         var size = array!!.getDimension(R.styleable.app_textSize, 14f * Resources.getSystem().displayMetrics.density)
         size /= Resources.getSystem().displayMetrics.density
 
-        tvText!!.textSize = size
+        tvText?.textSize = size
+
+        if (array!!.hasValue(R.styleable.app_customFontFamily)) {
+            val fontId = array!!.getResourceId(R.styleable.app_customFontFamily, -1)
+            val typeface = ResourcesCompat.getFont(context, fontId)
+            tvText?.typeface = typeface
+        }
 
         array?.recycle()
     }
