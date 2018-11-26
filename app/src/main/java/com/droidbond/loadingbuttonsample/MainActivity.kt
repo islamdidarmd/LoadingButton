@@ -18,11 +18,15 @@ class MainActivity : AppCompatActivity() {
                 custombtn.showLoading()
                 normal.showLoading()
             } else {
-                custombtn.hideLoading()
-                normal.hideLoading()
+                if(custombtn.isLoading()) {
+                    custombtn.showSuccess()
+                    normal.showError()
+                }else{
+                    custombtn.hideLoading()
+                    normal.hideLoading()
+                    show = !show
+                }
             }
-
-            show = !show
         }
 
         custombtn.setOnClickListener {
