@@ -11,21 +11,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var show = true
+        var show = 0
 
         buttonTap.setOnClickListener {
-            if (show) {
+            if (show == 0) {
                 custombtn.showLoading()
                 normal.showLoading()
-            } else {
-                if(custombtn.isLoading()) {
+                show = 1
+            } else if(show == 1 && custombtn.isLoading()){
                     custombtn.showSuccess()
                     normal.showError()
-                }else{
-                    custombtn.hideLoading()
-                    normal.hideLoading()
-                    show = !show
-                }
+                show = 2
+            }else{
+                custombtn.hideLoading()
+                normal.hideLoading()
+                show = 0
             }
         }
 
