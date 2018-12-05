@@ -22,7 +22,15 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 
-
+/**
+ * This class is a compound view includes a button, loader , success view and error view
+ *
+ * Use this class in your xml descriptor and edit attrs
+ *
+ * @param context The Context
+ * @param attrs the AttributeSet
+ * @param defStyleAttr the default Style
+ */
 class LoadingButton @JvmOverloads constructor(
     @NonNull context: Context, @Nullable attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
@@ -40,6 +48,9 @@ class LoadingButton @JvmOverloads constructor(
         initView()
     }
 
+    /**
+     * Hides loader and shows text on button
+     */
     fun hideLoading() {
         view.setBackgroundResource(bg)
         progressBar.visibility = View.INVISIBLE
@@ -48,6 +59,9 @@ class LoadingButton @JvmOverloads constructor(
         Log.d(TAG, "stopLoading: ")
     }
 
+    /**
+     * Hides text, loader and shows success icon
+     */
     fun showSuccess() {
         tvText.visibility = View.INVISIBLE
         view.setBackgroundResource(bg)
@@ -60,6 +74,9 @@ class LoadingButton @JvmOverloads constructor(
         img.setImageResource(R.drawable.ic_done_white_24dp)
     }
 
+    /**
+     * Hides text, loader and shows error icon with a red background
+     */
     fun showError() {
         tvText.visibility = View.INVISIBLE
 
@@ -74,6 +91,9 @@ class LoadingButton @JvmOverloads constructor(
         img.setImageResource(R.drawable.ic_warning)
     }
 
+    /**
+     * Shows loading animation
+     */
     fun showLoading() {
         view.setBackgroundResource(bg)
         progressBar.visibility = View.VISIBLE
@@ -82,6 +102,10 @@ class LoadingButton @JvmOverloads constructor(
         Log.d(TAG, "startLoading: ")
     }
 
+    /**
+     * Function isLoading() return type Boolean
+     * @return the state of loader.
+     */
     fun isLoading(): Boolean {
         return progressBar.isShown
     }
@@ -95,6 +119,15 @@ class LoadingButton @JvmOverloads constructor(
 
         addView(view)
 
+        updateView()
+        updateLoader()
+        updatedText()
+
+        array.recycle()
+    }
+
+    private fun updateView() {
+
         view.apply {
             val customBg = array.getResourceId(R.styleable.app_background, 0)
             if (customBg != 0) {
@@ -102,7 +135,9 @@ class LoadingButton @JvmOverloads constructor(
                 bg = customBg
             }
         }
+    }
 
+    private fun updateLoader() {
         progressBar.apply {
 
             var pbSize: Int = array.getInteger(R.styleable.app_progressBarSize, 32)
@@ -117,7 +152,9 @@ class LoadingButton @JvmOverloads constructor(
             )
             layoutParams = pbParams
         }
+    }
 
+    private fun updatedText() {
         tvText.apply {
             var customText = "Loading Button"
             var size = array.getDimension(R.styleable.app_textSize, 14f * Resources.getSystem().displayMetrics.density)
@@ -142,8 +179,6 @@ class LoadingButton @JvmOverloads constructor(
                 typeface = tf
             }
         }
-
-        array.recycle()
     }
 
 }
