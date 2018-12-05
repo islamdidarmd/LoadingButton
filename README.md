@@ -80,5 +80,9 @@ custombtn.showSuccess()
 ```java
 custombtn.showError()
 ```
+### Loading?
+```java
+custombtn.isLoading()
+```
 
 For a complete example see the sample app https://github.com/droidbond/LoadingButton/tree/master/app
