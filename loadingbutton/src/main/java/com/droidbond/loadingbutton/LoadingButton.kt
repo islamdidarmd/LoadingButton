@@ -82,63 +82,65 @@ class LoadingButton @JvmOverloads constructor(
         Log.d(TAG, "startLoading: ")
     }
 
-    fun isLoading():Boolean{
+    fun isLoading(): Boolean {
         return progressBar.isShown
     }
 
     private fun initView() {
 
         view = inflate(context, R.layout.layout_loading_button_lb, null)
-        addView(view)
-
-        val bg = array.getResourceId(R.styleable.app_background, 0)
-
-        if (bg != 0) {
-            view.setBackgroundResource(bg)
-            this.bg = bg
-        }
-
         progressBar = view.findViewById(R.id.pb)
         img = view.findViewById(R.id.img)
-
         tvText = view.findViewById(R.id.tvText)
 
-        progressBar.indeterminateDrawable?.setColorFilter(
-            array.getColor(R.styleable.app_progressColor, resources.getColor(R.color.white)),
-            PorterDuff.Mode.SRC_ATOP
-        )
+        addView(view)
 
-        var pbSize: Int = array.getInteger(R.styleable.app_progressBarSize, 32)
-        pbSize = Math.round(pbSize * (Resources.getSystem().displayMetrics.density))
-
-        val pbParams = LayoutParams(WRAP_CONTENT, pbSize)
-        pbParams.gravity = Gravity.CENTER
-        progressBar.layoutParams = pbParams
-
-
-        var text = "Loading Button"
-        if (array.getText(R.styleable.app_text) != null) {
-            text = array.getText(R.styleable.app_text).toString()
+        view.apply {
+            val customBg = array.getResourceId(R.styleable.app_background, 0)
+            if (customBg != 0) {
+                setBackgroundResource(customBg)
+                bg = customBg
+            }
         }
 
-        tvText.text = text
-        tvText.setTextColor(array.getColor(R.styleable.app_textColor, resources.getColor(R.color.white)))
+        progressBar.apply {
 
-        if (array.getBoolean(R.styleable.app_boldText, false)) {
-            tvText.setTypeface(null, Typeface.BOLD)
+            var pbSize: Int = array.getInteger(R.styleable.app_progressBarSize, 32)
+            pbSize = Math.round(pbSize * (Resources.getSystem().displayMetrics.density))
+
+            val pbParams = LayoutParams(WRAP_CONTENT, pbSize)
+            pbParams.gravity = Gravity.CENTER
+
+            indeterminateDrawable?.setColorFilter(
+                array.getColor(R.styleable.app_progressColor, resources.getColor(R.color.white)),
+                PorterDuff.Mode.SRC_ATOP
+            )
+            layoutParams = pbParams
         }
 
-        var size = array.getDimension(R.styleable.app_textSize, 14f * Resources.getSystem().displayMetrics.density)
-        size /= Resources.getSystem().displayMetrics.density
+        tvText.apply {
+            var customText = "Loading Button"
+            var size = array.getDimension(R.styleable.app_textSize, 14f * Resources.getSystem().displayMetrics.density)
+            var tf: Typeface? = null
 
-        tvText.textSize = size
+            if (array.getText(R.styleable.app_text) != null) {
+                customText = array.getText(R.styleable.app_text).toString()
+            }
+            size /= Resources.getSystem().displayMetrics.density
 
-        if (array.hasValue(R.styleable.app_customFontFamily)) {
-            val fontId = array.getResourceId(R.styleable.app_customFontFamily, -1)
-            val typeface = ResourcesCompat.getFont(context, fontId)
-            tvText.typeface = typeface
-        } else {
-            tvText.typeface = null
+            if (array.hasValue(R.styleable.app_customFontFamily)) {
+                val fontId = array.getResourceId(R.styleable.app_customFontFamily, -1)
+                tf = ResourcesCompat.getFont(context, fontId)
+            }
+
+            text = customText
+            setTextColor(array.getColor(R.styleable.app_textColor, resources.getColor(R.color.white)))
+            textSize = size
+            if (array.getBoolean(R.styleable.app_boldText, false)) {
+                setTypeface(tf, Typeface.BOLD)
+            } else if (tf != null) {
+                typeface = tf
+            }
         }
 
         array.recycle()
