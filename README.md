@@ -14,14 +14,12 @@ Add the dependency to your root *build.gradle*:
 Now add this dependency in your module *build.gradle*
 ```groovy
    dependencies {
-         implementation 'com.github.droidbond:LoadingButton:0.1.5'
+         implementation 'com.github.droidbond:LoadingButton:0.1.6'
    }
 ```
 
 ### Demo
-  <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155730.png" width="250">
-  <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155750.png" width="250">
-  <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-26-120750.png" width="250">
+  <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155730.png" width="250"> <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-22-155750.png" width="250"> <img src="https://github.com/droidbond/LoadingButton/blob/master/device-2018-11-26-120750.png" width="250">
 
 ### How to use
 For using custom attributes use `app` namespace
