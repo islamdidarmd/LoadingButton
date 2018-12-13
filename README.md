@@ -1,6 +1,7 @@
 # LoadingButton
 A lightweight library to show loading animation inside a button
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/854722f7c90a43e29caf0b7b477d1ee9)](https://app.codacy.com/app/droidbond/LoadingButton?utm_source=github.com&utm_medium=referral&utm_content=droidbond/LoadingButton&utm_campaign=Badge_Grade_Dashboard)
 [![](https://jitpack.io/v/droidbond/LoadingButton.svg)](https://jitpack.io/v/droidbond/LoadingButton)
 
 ## Installation (with Gradle)
