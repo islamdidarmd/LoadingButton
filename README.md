@@ -93,4 +93,4 @@ custombtn.showError()
 custombtn.isLoading()
 ```
 
-For a complete example, see the [sample app] (LoadingButton/tree/master/app)
+For a complete example, see the sample app `https://github.com/droidbond/LoadingButton/tree/master/app`
