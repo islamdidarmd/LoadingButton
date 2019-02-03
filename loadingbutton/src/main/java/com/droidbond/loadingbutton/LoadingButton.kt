@@ -43,6 +43,10 @@ class LoadingButton @JvmOverloads constructor(
     private lateinit var tvText: TextView
     private var array: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.app, defStyleAttr, 0)
     private var bg: Int = R.drawable.ic_bg_blue_buttons_style
+    private var successBg: Int = R.drawable.ic_bg_blue_buttons_style
+    private var errorBg: Int = R.drawable.ic_bg_red_buttons_style
+    private var successIcon: Int = R.drawable.ic_done_white_24dp
+    private var errorIcon: Int = R.drawable.ic_warning
 
     init {
         initView()
@@ -64,14 +68,14 @@ class LoadingButton @JvmOverloads constructor(
      */
     fun showSuccess() {
         tvText.visibility = View.INVISIBLE
-        view.setBackgroundResource(bg)
+        view.setBackgroundResource(successBg)
 
         if (Build.VERSION.SDK_INT >= 19) {
             TransitionManager.beginDelayedTransition(view as ViewGroup, Fade(Fade.IN))
         }
         progressBar.visibility = View.INVISIBLE
         img.visibility = View.VISIBLE
-        img.setImageResource(R.drawable.ic_done_white_24dp)
+        img.setImageResource(successIcon)
     }
 
     /**
@@ -80,7 +84,7 @@ class LoadingButton @JvmOverloads constructor(
     fun showError() {
         tvText.visibility = View.INVISIBLE
 
-        view.setBackgroundResource(R.drawable.ic_bg_red_buttons_style)
+        view.setBackgroundResource(errorBg)
 
         if (Build.VERSION.SDK_INT >= 19) {
             TransitionManager.beginDelayedTransition(view as ViewGroup, Fade(Fade.IN))
@@ -88,7 +92,7 @@ class LoadingButton @JvmOverloads constructor(
 
         progressBar.visibility = View.INVISIBLE
         img.visibility = View.VISIBLE
-        img.setImageResource(R.drawable.ic_warning)
+        img.setImageResource(errorIcon)
     }
 
     /**
@@ -133,6 +137,20 @@ class LoadingButton @JvmOverloads constructor(
             if (customBg != 0) {
                 setBackgroundResource(customBg)
                 bg = customBg
+            }
+
+            if (array.getResourceId(R.styleable.app_successBackground, 0) != 0) {
+                successBg = array.getResourceId(R.styleable.app_successBackground, 0)
+            }
+            if (array.getResourceId(R.styleable.app_errorBackground, 0) != 0) {
+                errorBg = array.getResourceId(R.styleable.app_errorBackground, 0)
+            }
+
+            if (array.getResourceId(R.styleable.app_successIcon, 0) != 0) {
+                successIcon = array.getResourceId(R.styleable.app_successIcon, 0)
+            }
+            if (array.getResourceId(R.styleable.app_errorIcon, 0) != 0) {
+                errorIcon = array.getResourceId(R.styleable.app_errorIcon, 0)
             }
         }
     }

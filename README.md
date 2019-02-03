@@ -28,37 +28,46 @@ For using custom attributes use `app` namespace
 xmlns:app="http://schemas.android.com/apk/res-auto"
  ```
 ```xml
-    <com.droidbond.loadingbutton.LoadingButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/normal"
-            app:text="@string/continue_text"
-            app:textColor="@color/white"
-            app:progressColor="@color/black"
-            app:progressBarSize="small"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"/>
+     <com.droidbond.loadingbutton.LoadingButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:text="Custom Button"
+                app:background="@color/colorAccent"
+                app:successBackground="@drawable/ic_bg_blue_buttons_style"
+                app:successIcon="@drawable/ic_done_white_24dp"
+                app:textSize="16sp"
+                app:boldText="true"
+                app:textColor="@color/black"
+                app:progressColor="@color/black"
+                app:progressBarSize="small"
+                android:id="@+id/custombtn"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"/>
 ```
 ### Customizable attributes
 ```xml
-        <attr name="text" format="string"/>
-        <attr name="textColor" format="color"/>
-        <attr name="boldText" format="boolean"/>
-        <attr name="textSize" format="dimension"/>
-        <attr name="progressColor" format="color"/>
-        <attr name="customFontFamily" format="reference"/>
-        <attr name="background" format="reference"/>
-        <attr name="progressBarSize" format="enum">
-            <enum name="large" value="64"/>
-            <enum name="medium" value="48"/>
-            <enum name="small" value="18"/>
-        </attr>
+         <attr name="text" format="string"/>
+                <attr name="textColor" format="color"/>
+                <attr name="boldText" format="boolean"/>
+                <attr name="textSize" format="dimension"/>
+                <attr name="progressColor" format="color"/>
+                <attr name="background" format="reference"/>
+                <attr name="successBackground" format="reference"/>
+                <attr name="errorBackground" format="reference"/>
+                <attr name="successIcon" format="reference"/>
+                <attr name="errorIcon" format="reference"/>
+                <attr name="customFontFamily" format="reference"/>
+                <attr name="progressBarSize" format="enum">
+                    <enum name="large" value="64"/>
+                    <enum name="medium" value="48"/>
+                    <enum name="small" value="18"/>
+                </attr>
 ```
 ```java
 LoadingButton custombtn = findViewById(R.id.custombtn);
@@ -79,9 +88,9 @@ custombtn.showSuccess()
 ```java
 custombtn.showError()
 ```
-### Loading?
+### Loading status
 ```java
 custombtn.isLoading()
 ```
 
-For a complete example see the sample app https://github.com/droidbond/LoadingButton/tree/master/app
+For a complete example, see the [sample app] (LoadingButton/tree/master/app)
