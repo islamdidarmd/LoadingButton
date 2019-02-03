@@ -15,7 +15,7 @@ Add the dependency to your root *build.gradle*:
 Now add this dependency in your module *build.gradle*
 ```groovy
    dependencies {
-         implementation 'com.github.droidbond:LoadingButton:0.1.6'
+         implementation 'com.github.droidbond:LoadingButton:0.1.7'
    }
 ```
 
