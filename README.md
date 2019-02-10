@@ -24,7 +24,7 @@ Now add this dependency in your module *build.gradle*
 
 ### How to use
 For using custom attributes use `app` namespace
-```
+```xml
 xmlns:app="http://schemas.android.com/apk/res-auto"
  ```
 ```xml
