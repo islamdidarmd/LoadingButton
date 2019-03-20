@@ -2,7 +2,7 @@
 A lightweight library to show loading animation inside a button
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/854722f7c90a43e29caf0b7b477d1ee9)](https://app.codacy.com/app/droidbond/LoadingButton?utm_source=github.com&utm_medium=referral&utm_content=droidbond/LoadingButton&utm_campaign=Badge_Grade_Dashboard)
-[![](https://jitpack.io/v/droidbond/LoadingButton.svg)](https://jitpack.io/v/droidbond/LoadingButton)
+[![](https://jitpack.io/v/islamdidarmd/LoadingButton.svg)](https://jitpack.io/v/islamdidarmd/LoadingButton)
 
 ## Installation (with Gradle)
 Add the dependency to your root *build.gradle*:
@@ -15,7 +15,7 @@ Add the dependency to your root *build.gradle*:
 Now add this dependency in your module *build.gradle*
 ```groovy
    dependencies {
-         implementation 'com.github.droidbond:LoadingButton:0.1.7'
+         implementation 'com.github.islamdidarmd:LoadingButton:0.1.7'
    }
 ```
 
