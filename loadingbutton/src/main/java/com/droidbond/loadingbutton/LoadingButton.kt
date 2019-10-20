@@ -6,9 +6,9 @@ import android.content.res.TypedArray
 import android.graphics.PorterDuff
 import android.graphics.Typeface
 import android.os.Build
-import android.support.annotation.NonNull
-import android.support.annotation.Nullable
-import android.support.v4.content.res.ResourcesCompat
+import androidx.annotation.NonNull
+import androidx.annotation.Nullable
+import androidx.core.content.res.ResourcesCompat
 import android.transition.Fade
 import android.transition.TransitionManager
 import android.util.AttributeSet
@@ -41,12 +41,15 @@ class LoadingButton @JvmOverloads constructor(
     private lateinit var img: ImageView
     private lateinit var view: View
     private lateinit var tvText: TextView
-    private var array: TypedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.app, defStyleAttr, 0)
+    private var array: TypedArray =
+        context.theme.obtainStyledAttributes(attrs, R.styleable.app, defStyleAttr, 0)
     private var bg: Int = R.drawable.ic_bg_blue_buttons_style
     private var successBg: Int = R.drawable.ic_bg_blue_buttons_style
     private var errorBg: Int = R.drawable.ic_bg_red_buttons_style
     private var successIcon: Int = R.drawable.ic_done_white_24dp
     private var errorIcon: Int = R.drawable.ic_warning
+
+    private var shouldShowBoldText = false
 
     init {
         initView()
@@ -57,9 +60,9 @@ class LoadingButton @JvmOverloads constructor(
      */
     fun hideLoading() {
         view.setBackgroundResource(bg)
-        progressBar.visibility = View.INVISIBLE
-        img.visibility = View.INVISIBLE
-        tvText.visibility = View.VISIBLE
+        progressBar.hideSelf()
+        img.hideSelf()
+        tvText.showSelf()
         Log.d(TAG, "stopLoading: ")
     }
 
@@ -67,14 +70,14 @@ class LoadingButton @JvmOverloads constructor(
      * Hides text, loader and shows success icon
      */
     fun showSuccess() {
-        tvText.visibility = View.INVISIBLE
+        tvText.hideSelf()
         view.setBackgroundResource(successBg)
 
         if (Build.VERSION.SDK_INT >= 19) {
             TransitionManager.beginDelayedTransition(view as ViewGroup, Fade(Fade.IN))
         }
-        progressBar.visibility = View.INVISIBLE
-        img.visibility = View.VISIBLE
+        progressBar.hideSelf()
+        img.showSelf()
         img.setImageResource(successIcon)
     }
 
@@ -82,7 +85,7 @@ class LoadingButton @JvmOverloads constructor(
      * Hides text, loader and shows error icon with a red background
      */
     fun showError() {
-        tvText.visibility = View.INVISIBLE
+        tvText.hideSelf()
 
         view.setBackgroundResource(errorBg)
 
@@ -90,8 +93,8 @@ class LoadingButton @JvmOverloads constructor(
             TransitionManager.beginDelayedTransition(view as ViewGroup, Fade(Fade.IN))
         }
 
-        progressBar.visibility = View.INVISIBLE
-        img.visibility = View.VISIBLE
+        progressBar.hideSelf()
+        img.showSelf()
         img.setImageResource(errorIcon)
     }
 
@@ -100,9 +103,9 @@ class LoadingButton @JvmOverloads constructor(
      */
     fun showLoading() {
         view.setBackgroundResource(bg)
-        progressBar.visibility = View.VISIBLE
-        tvText.visibility = View.INVISIBLE
-        img.visibility = View.INVISIBLE
+        progressBar.showSelf()
+        tvText.hideSelf()
+        img.hideSelf()
         Log.d(TAG, "startLoading: ")
     }
 
@@ -175,7 +178,10 @@ class LoadingButton @JvmOverloads constructor(
     private fun updatedText() {
         tvText.apply {
             var customText = "Loading Button"
-            var size = array.getDimension(R.styleable.app_textSize, 14f * Resources.getSystem().displayMetrics.density)
+            var size = array.getDimension(
+                R.styleable.app_textSize,
+                14f * Resources.getSystem().displayMetrics.density
+            )
             var tf: Typeface? = null
 
             if (array.getText(R.styleable.app_text) != null) {
@@ -183,19 +189,33 @@ class LoadingButton @JvmOverloads constructor(
             }
             size /= Resources.getSystem().displayMetrics.density
 
+            text = customText
+            setTextColor(
+                array.getColor(
+                    R.styleable.app_textColor,
+                    resources.getColor(R.color.white)
+                )
+            )
+            textSize = size
+
+            shouldShowBoldText = array.getBoolean(R.styleable.app_boldText, false)
+
             if (array.hasValue(R.styleable.app_customFontFamily)) {
                 val fontId = array.getResourceId(R.styleable.app_customFontFamily, -1)
                 tf = ResourcesCompat.getFont(context, fontId)
             }
+            setTypeFace(tf)
+        }
+    }
 
-            text = customText
-            setTextColor(array.getColor(R.styleable.app_textColor, resources.getColor(R.color.white)))
-            textSize = size
-            if (array.getBoolean(R.styleable.app_boldText, false)) {
-                setTypeface(tf, Typeface.BOLD)
-            } else if (tf != null) {
-                typeface = tf
-            }
+    /**
+     * sets a custom [Typeface] for text.
+     */
+    fun setTypeFace(typeface: Typeface?) {
+        if (shouldShowBoldText) {
+            tvText.setTypeface(typeface, Typeface.BOLD)
+        } else {
+            tvText.typeface = typeface
         }
     }
 

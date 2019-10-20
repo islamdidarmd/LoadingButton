@@ -1,8 +1,9 @@
 package com.droidbond.loadingbuttonsample
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -11,21 +12,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val typeface = ResourcesCompat.getFont(this, R.font.roboto)
+        custombtn.setTypeFace(typeface)
+
         var show = 0
 
         buttonTap.setOnClickListener {
-            if (show == 0) {
+            show = if (show == 0) {
                 custombtn.showLoading()
                 normal.showLoading()
-                show = 1
-            } else if(show == 1 && custombtn.isLoading()){
-                    custombtn.showSuccess()
-                    normal.showError()
-                show = 2
-            }else{
+                1
+            } else if (show == 1 && custombtn.isLoading()) {
+                custombtn.showSuccess()
+                normal.showError()
+                2
+            } else {
                 custombtn.hideLoading()
                 normal.hideLoading()
-                show = 0
+                0
             }
         }
 

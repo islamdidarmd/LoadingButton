@@ -1,5 +1,5 @@
 # LoadingButton
-A lightweight library to show loading animation inside a button
+A small utility to show loading animation inside a button
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/854722f7c90a43e29caf0b7b477d1ee9)](https://app.codacy.com/app/droidbond/LoadingButton?utm_source=github.com&utm_medium=referral&utm_content=droidbond/LoadingButton&utm_campaign=Badge_Grade_Dashboard)
 [![](https://jitpack.io/v/droidbond/LoadingButton.svg)](https://jitpack.io/v/droidbond/LoadingButton)
@@ -91,6 +91,11 @@ custombtn.showError()
 ### Loading status
 ```java
 custombtn.isLoading()
+```
+
+### Set Custom TypeFace
+```java
+custombtn.setTypeFace(typeface)
 ```
 
 For a complete example, see the sample app `https://github.com/droidbond/LoadingButton/tree/master/app`

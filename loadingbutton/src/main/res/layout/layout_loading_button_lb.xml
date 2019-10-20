@@ -13,7 +13,7 @@
             android:layout_gravity="center"
             android:paddingStart="6dp"
             android:paddingEnd="6dp"
-            android:visibility="visible"/>
+            android:visibility="visible" />
 
     <ProgressBar
             android:id="@+id/pb"
