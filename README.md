@@ -15,7 +15,7 @@ Add the dependency to your root *build.gradle*:
 Now add this dependency in your module *build.gradle*
 ```groovy
    dependencies {
-         implementation 'com.github.islamdidarmd:LoadingButton:0.1.7'
+         implementation 'com.github.islamdidarmd:LoadingButton:0.1.8'
    }
 ```
 
